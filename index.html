@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pardo 43 Configurator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;700;800&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --white: #FFFFFF;
+  --off-white: #FAFAFA;
+  --cream: #F5F5F4;
+  --border: #E7E5E4;
+  --border-strong: #D6D3D1;
+  --text-muted: #A8A29E;
+  --text-secondary: #57534E;
+  --text-primary: #0A0A0A;
+  --black: #0A0A0A;
+  --true-black: #000000;
+  --red: #DC2626;
+  --red-deep: #B91C1C;
+  --red-soft: #FEE2E2;
+  --green-ok: #16A34A;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  background: var(--white);
+  color: var(--text-primary);
+  font-family: 'Nunito', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+}
+.cfg-root {
+  min-height: 100vh;
+  background: var(--white);
+  padding-bottom: 140px;
+}
+
+/* HEADER */
+.cfg-header {
+  border-bottom: 1px solid var(--border);
+  padding: 18px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  position: sticky; top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.cfg-wordmark {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  display: flex; align-items: center; gap: 10px;
+}
+.cfg-wordmark-dot {
+  width: 6px; height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+  display: inline-block;
+}
+.cfg-header-meta { display: flex; align-items: center; gap: 12px; }
+.cfg-id-pill {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 11px; letter-spacing: 0.12em;
+  font-weight: 500;
+  padding: 6px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  color: var(--text-primary);
+  background: var(--white);
+}
+.cfg-id-pill-label { color: var(--text-muted); margin-right: 6px; font-weight: 400; }
+
+/* HERO */
+.cfg-hero {
+  padding: 64px 24px 40px;
+  max-width: 1280px; margin: 0 auto;
+  position: relative;
+}
+.cfg-hero-eyebrow {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 11px; letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--red);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.cfg-hero-eyebrow::before {
+  content: "";
+  width: 20px; height: 1px;
+  background: var(--red);
+}
+.cfg-hero-title {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: clamp(56px, 10vw, 120px);
+  font-weight: 300;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  color: var(--text-primary);
+  margin: 0 0 20px 0;
+}
+.cfg-hero-sub {
+  font-family: 'Nunito', sans-serif;
+  font-size: 17px; font-weight: 400;
+  color: var(--text-secondary);
+  max-width: 560px; line-height: 1.5;
+  margin-bottom: 40px;
+}
+.cfg-hero-stats {
+  display: flex; gap: 56px; flex-wrap: wrap;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.cfg-stat-label {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 10px; letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 10px;
+  font-weight: 500;
+}
+.cfg-stat-value {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 26px; font-weight: 500;
+  color: var(--text-primary); letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* BASE CARD */
+.cfg-base-card {
+  border: 1px solid var(--border);
+  padding: 28px;
+  border-radius: 6px;
+  background: var(--off-white);
+  margin-top: 48px;
+  position: relative;
+}
+.cfg-base-card::before {
+  content: "";
+  position: absolute;
+  top: -1px; left: 28px;
+  width: 40px; height: 2px;
+  background: var(--red);
+}
+.cfg-base-title {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 20px; font-weight: 600;
+  color: var(--text-primary); margin: 0 0 14px 0;
+  display: flex; justify-content: space-between; align-items: baseline;
+  letter-spacing: -0.01em;
+}
+.cfg-base-price {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+.cfg-base-list {
+  list-style: none; padding: 0; margin: 14px 0 0 0;
+  display: grid; grid-template-columns: 1fr; gap: 10px;
+}
+@media (min-width: 700px) { .cfg-base-list { grid-template-columns: 1fr 1fr; } }
+.cfg-base-list li {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5; padding-left: 18px;
+  position: relative;
+  font-weight: 400;
+}
+.cfg-base-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 10px;
+  width: 10px; height: 1px;
+  background: var(--text-primary);
+}
+
+/* LAYOUT */
+.cfg-layout {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  position: relative;
+}
+@media (min-width: 960px) {
+  .cfg-layout { grid-template-columns: 1fr 380px; gap: 72px; }
+}
+
+/* SECTION */
+.cfg-section {
+  border-top: 1px solid var(--border);
+  padding: 48px 0 8px;
+}
+.cfg-section-header {
+  display: flex; align-items: baseline;
+  justify-content: space-between; gap: 16px;
+  margin-bottom: 12px;
+}
+.cfg-section-title {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 32px; font-weight: 400;
+  letter-spacing: -0.025em;
+  color: var(--text-primary); margin: 0;
+}
+.cfg-section-lead {
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px; color: var(--text-secondary);
+  margin: 8px 0 32px 0;
+  font-weight: 400;
+}
+.cfg-section-count {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* OPTION ROW */
+.cfg-option {
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-items: start;
+}
+.cfg-option:hover { background: var(--off-white); margin: 0 -12px; padding-left: 12px; padding-right: 12px; }
+.cfg-option-check {
+  width: 22px; height: 22px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 4px; margin-top: 2px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0; background: transparent;
+}
+.cfg-option-check.checked {
+  background: var(--text-primary);
+  border-color: var(--text-primary);
+}
+.cfg-option-check svg {
+  width: 14px; height: 14px;
+  stroke: var(--white); stroke-width: 3; fill: none;
+  opacity: 0; transition: opacity 0.2s ease 0.05s;
+}
+.cfg-option-check.checked svg { opacity: 1; }
+.cfg-option-name {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px; color: var(--text-primary);
+  line-height: 1.5;
+  font-weight: 500;
+}
+.cfg-option-meta {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;
+}
+.cfg-option-note {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px; color: var(--text-primary);
+  font-weight: 600;
+  padding: 3px 9px;
+  background: var(--cream);
+  border-radius: 3px; letter-spacing: 0.02em;
+}
+.cfg-option-delivery {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px; color: var(--red);
+  font-weight: 600;
+  padding: 3px 9px;
+  background: var(--red-soft);
+  border-radius: 3px; letter-spacing: 0.02em;
+}
+.cfg-option-group-tag {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 10px; color: var(--red);
+  font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px solid var(--red-soft);
+  border-radius: 3px;
+}
+.cfg-option-price {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 15px; color: var(--text-primary);
+  text-align: right; white-space: nowrap;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  margin-top: 1px;
+}
+.cfg-option-qty {
+  display: flex; align-items: center; gap: 10px; margin-top: 10px;
+}
+.cfg-qty-btn {
+  width: 28px; height: 28px;
+  border: 1px solid var(--border-strong);
+  background: var(--white); color: var(--text-primary);
+  border-radius: 4px; cursor: pointer;
+  font-size: 15px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.cfg-qty-btn:hover { border-color: var(--red); color: var(--red); }
+.cfg-qty-val {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 14px; min-width: 20px; text-align: center;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* SIDEBAR */
+.cfg-sidebar {
+  position: sticky; top: 88px;
+  align-self: start;
+  display: none;
+}
+@media (min-width: 960px) { .cfg-sidebar { display: block; } }
+.cfg-summary {
+  background: var(--text-primary);
+  color: var(--white);
+  border-radius: 6px;
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.cfg-summary::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 36px;
+  width: 40px; height: 2px;
+  background: var(--red);
+}
+.cfg-summary-label {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 10px; letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+.cfg-summary-total {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 46px; font-weight: 400;
+  letter-spacing: -0.035em;
+  color: var(--white);
+  margin-bottom: 8px; line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.cfg-summary-count {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+.cfg-summary-breakdown {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 20px;
+}
+.cfg-summary-row {
+  display: flex; justify-content: space-between;
+  font-size: 13px; padding: 7px 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+}
+.cfg-summary-row-label { color: var(--text-muted); }
+.cfg-summary-row-val {
+  font-family: 'Parkinsans', sans-serif;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.cfg-action-stack {
+  margin-top: 28px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.cfg-btn {
+  padding: 14px 20px;
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  border-radius: 4px; cursor: pointer;
+  border: none; transition: all 0.2s ease;
+  text-align: center;
+}
+.cfg-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.cfg-btn-primary { background: var(--white); color: var(--text-primary); }
+.cfg-btn-primary:hover:not(:disabled) { background: var(--cream); }
+.cfg-btn-primary.flash { background: var(--red); color: var(--white); }
+.cfg-btn-ghost {
+  background: transparent; color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+.cfg-btn-ghost:hover:not(:disabled) { border-color: var(--white); color: var(--white); }
+
+/* Header saved button (light mode) */
+.cfg-btn-light-ghost {
+  background: transparent; color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  padding: 8px 14px;
+  font-size: 11px;
+  font-family: 'Parkinsans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cfg-btn-light-ghost:hover { border-color: var(--text-primary); }
+
+/* MOBILE STICKY BAR */
+.cfg-mobile-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-strong);
+  padding: 14px 20px 20px;
+  z-index: 20;
+  display: flex; gap: 12px; align-items: center;
+}
+@media (min-width: 960px) { .cfg-mobile-bar { display: none; } }
+.cfg-mobile-bar-total { flex: 1; }
+.cfg-mobile-bar-label {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 9px; letter-spacing: 0.2em;
+  color: var(--text-muted); text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.cfg-mobile-bar-value {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 24px; font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+.cfg-mobile-bar-actions { display: flex; gap: 8px; }
+.cfg-icon-btn {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--border-strong);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+.cfg-icon-btn:hover { border-color: var(--text-primary); }
+.cfg-icon-btn.primary {
+  background: var(--text-primary); color: var(--white);
+  border-color: var(--text-primary);
+}
+.cfg-icon-btn.primary.flash {
+  background: var(--red); border-color: var(--red);
+}
+.cfg-icon-btn svg { width: 18px; height: 18px; stroke-width: 1.5; }
+
+/* MODALS */
+.cfg-modal-bg {
+  position: fixed; inset: 0;
+  background: rgba(10, 10, 10, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 50;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.cfg-modal-bg[hidden] { display: none; }
+.cfg-modal {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  max-width: 560px; width: 100%;
+  max-height: 80vh; overflow-y: auto;
+  padding: 36px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+.cfg-modal-title {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 28px; font-weight: 500;
+  color: var(--text-primary); margin: 0 0 8px 0;
+  letter-spacing: -0.025em;
+}
+.cfg-modal-sub {
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px; color: var(--text-secondary);
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+.cfg-modal-close {
+  position: absolute; top: 18px; right: 18px;
+  width: 32px; height: 32px;
+  background: transparent; border: 1px solid var(--border);
+  color: var(--text-secondary); cursor: pointer;
+  font-size: 18px; line-height: 1;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease;
+}
+.cfg-modal-close:hover { border-color: var(--text-primary); color: var(--text-primary); }
+.cfg-saved-item {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin-bottom: 10px; cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--white);
+}
+.cfg-saved-item:hover { border-color: var(--text-primary); background: var(--off-white); }
+.cfg-saved-id {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 12px;
+  color: var(--red);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin-bottom: 6px;
+}
+.cfg-saved-name {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px; color: var(--text-primary);
+  font-weight: 600;
+}
+.cfg-saved-meta {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px; color: var(--text-muted);
+  margin-top: 4px;
+  font-weight: 400;
+}
+.cfg-saved-price {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 15px; color: var(--text-primary);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.cfg-input {
+  width: 100%;
+  background: var(--white);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  padding: 13px 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s ease;
+}
+.cfg-input:focus { outline: none; border-color: var(--text-primary); }
+.cfg-label {
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-bottom: 8px; display: block;
+  font-weight: 600;
+}
+.cfg-btn-modal {
+  padding: 14px 20px;
+  font-family: 'Parkinsans', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  border-radius: 4px; cursor: pointer;
+  border: none; transition: all 0.2s ease;
+  text-align: center;
+  background: var(--text-primary); color: var(--white);
+}
+.cfg-btn-modal:hover { background: var(--red); }
+
+/* PRINT LAYOUT */
+.cfg-print-view { display: none; }
+@media print {
+  @page { size: letter; margin: 0.5in; }
+  body { background: white; color: #111; }
+  .cfg-root > *:not(.cfg-print-view) { display: none; }
+  .cfg-print-view {
+    display: block; color: #111;
+    font-family: 'Nunito', sans-serif; font-size: 10pt;
+  }
+  .cfg-print-header {
+    border-bottom: 2px solid #111;
+    padding-bottom: 16px; margin-bottom: 20px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .cfg-print-wordmark {
+    font-family: 'Parkinsans', sans-serif;
+    font-size: 11pt; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .cfg-print-id {
+    font-family: 'Parkinsans', sans-serif;
+    font-size: 10pt; font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+  .cfg-print-title {
+    font-family: 'Parkinsans', sans-serif;
+    font-size: 32pt; font-weight: 300; letter-spacing: -0.035em;
+    line-height: 1; margin: 0 0 8px 0;
+  }
+  .cfg-print-tagline {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11pt; color: #555;
+    font-weight: 400;
+  }
+  .cfg-print-meta-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    margin: 22px 0; padding: 14px 0;
+    border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;
+  }
+  .cfg-print-meta-label {
+    font-family: 'Parkinsans', sans-serif;
+    font-size: 7pt; letter-spacing: 0.16em;
+    text-transform: uppercase; color: #666;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .cfg-print-meta-value {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11pt; color: #111;
+    font-weight: 500;
+  }
+  .cfg-print-section { margin-bottom: 20px; page-break-inside: avoid; }
+  .cfg-print-section-title {
+    font-family: 'Parkinsans', sans-serif;
+    font-size: 14pt; font-weight: 600;
+    border-bottom: 1px solid #111;
+    padding-bottom: 4px; margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .cfg-print-option {
+    display: flex; justify-content: space-between;
+    padding: 5px 0; border-bottom: 1px dotted #ccc;
+    font-size: 10pt;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+  }
+  .cfg-print-option-name { flex: 1; padding-right: 20px; }
+  .cfg-print-option-price {
+    font-family: 'Parkinsans', sans-serif;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .cfg-print-total {
+    margin-top: 26px; padding: 18px 0;
+    border-top: 3px double #111; border-bottom: 3px double #111;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .cfg-print-total-label {
+    font-family: 'Parkinsans', sans-serif;
+    font-size: 16pt; font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .cfg-print-total-value {
+    font-family: 'Parkinsans', sans-serif;
+    font-size: 24pt; font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .cfg-print-sigs {
+    margin-top: 60px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+  }
+  .cfg-print-sig-line {
+    border-top: 1px solid #111; padding-top: 6px;
+    font-family: 'Parkinsans', sans-serif;
+    font-size: 8pt; color: #666;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 500;
+  }
+  .cfg-print-footer {
+    margin-top: 24px; padding-top: 12px;
+    border-top: 1px solid #ccc;
+    font-family: 'Nunito', sans-serif;
+    font-size: 8pt; color: #666; text-align: center;
+    font-weight: 400;
+  }
+  .cfg-print-base-list { font-size: 9pt; columns: 2; column-gap: 20px; list-style: none; padding-left: 0; }
+  .cfg-print-base-list li {
+    break-inside: avoid; margin-bottom: 3px;
+    padding-left: 14px; position: relative;
+    font-family: 'Nunito', sans-serif;
+  }
+  .cfg-print-base-list li::before {
+    content: ""; position: absolute;
+    left: 0; top: 7px; width: 8px; height: 1px;
+    background: #111;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="cfg-root">
+
+  <!-- HEADER -->
+  <header class="cfg-header">
+    <div class="cfg-wordmark">
+      <span class="cfg-wordmark-dot"></span>
+      Configurator
+    </div>
+    <div class="cfg-header-meta">
+      <div id="cfg-id-pill" class="cfg-id-pill" style="display:none;">
+        <span class="cfg-id-pill-label">SPEC</span><span id="cfg-id-value"></span>
+      </div>
+      <button class="cfg-btn-light-ghost" onclick="openModal('load')">Saved</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="cfg-hero">
+    <div class="cfg-hero-eyebrow">Pardo Yachts Miami · Build Configurator</div>
+    <h1 class="cfg-hero-title" id="cfg-model-title">Pardo 43</h1>
+    <p class="cfg-hero-sub" id="cfg-model-tagline">Italian walkaround, open deck, Volvo IPS propulsion. Configure your build, save the specification, return to modify at any time.</p>
+    <div class="cfg-hero-stats">
+      <div>
+        <div class="cfg-stat-label">Base Price</div>
+        <div class="cfg-stat-value" id="cfg-base-price-display">$912,000</div>
+      </div>
+      <div>
+        <div class="cfg-stat-label">Length Overall</div>
+        <div class="cfg-stat-value">43 ft</div>
+      </div>
+      <div>
+        <div class="cfg-stat-label">Propulsion</div>
+        <div class="cfg-stat-value">Volvo IPS</div>
+      </div>
+      <div>
+        <div class="cfg-stat-label">Model Year</div>
+        <div class="cfg-stat-value">2024</div>
+      </div>
+    </div>
+
+    <div class="cfg-base-card">
+      <h3 class="cfg-base-title">
+        <span>Standard Equipment Included</span>
+        <span class="cfg-base-price">in base price</span>
+      </h3>
+      <ul class="cfg-base-list" id="cfg-base-list"></ul>
+    </div>
+  </section>
+
+  <!-- MAIN LAYOUT -->
+  <div class="cfg-layout">
+    <div id="cfg-sections"></div>
+
+    <aside class="cfg-sidebar">
+      <div class="cfg-summary">
+        <div class="cfg-summary-label">Build Total</div>
+        <div class="cfg-summary-total" id="cfg-total-display">$912,000</div>
+        <div class="cfg-summary-count" id="cfg-count-display">0 options selected</div>
+        <div class="cfg-summary-breakdown">
+          <div class="cfg-summary-row">
+            <span class="cfg-summary-row-label">Base model</span>
+            <span class="cfg-summary-row-val" id="cfg-base-price-row">$912,000</span>
+          </div>
+          <div class="cfg-summary-row">
+            <span class="cfg-summary-row-label">Options total</span>
+            <span class="cfg-summary-row-val" id="cfg-options-total">$0</span>
+          </div>
+          <div class="cfg-summary-row" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.12);">
+            <span class="cfg-summary-row-label">US delivery</span>
+            <span class="cfg-summary-row-val" style="color: var(--red);">Included</span>
+          </div>
+        </div>
+        <div class="cfg-action-stack">
+          <button id="cfg-save-btn" class="cfg-btn cfg-btn-primary" onclick="saveConfig()">Save Configuration</button>
+          <button class="cfg-btn cfg-btn-ghost" onclick="exportPDF()">Export Spec PDF</button>
+          <button class="cfg-btn cfg-btn-ghost" onclick="openModal('customer')">Customer Info</button>
+          <button class="cfg-btn cfg-btn-ghost" onclick="newConfig()">Start New</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- MOBILE STICKY BAR -->
+  <div class="cfg-mobile-bar">
+    <div class="cfg-mobile-bar-total">
+      <div class="cfg-mobile-bar-label" id="cfg-mobile-label">Total · 0 options</div>
+      <div class="cfg-mobile-bar-value" id="cfg-mobile-total">$912,000</div>
+    </div>
+    <div class="cfg-mobile-bar-actions">
+      <button class="cfg-icon-btn" onclick="exportPDF()" title="Export PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+      <button id="cfg-mobile-save" class="cfg-icon-btn primary" onclick="saveConfig()" title="Save">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline points="17,21 17,13 7,13 7,21" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline points="7,3 7,8 15,8" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+  <div id="cfg-modal-load" class="cfg-modal-bg" hidden onclick="closeModal(event)">
+    <div class="cfg-modal" onclick="event.stopPropagation()">
+      <button class="cfg-modal-close" onclick="closeModal()">×</button>
+      <h2 class="cfg-modal-title">Saved Configurations</h2>
+      <p class="cfg-modal-sub">Open any saved build to modify or export</p>
+      <div id="cfg-saved-list"></div>
+    </div>
+  </div>
+
+  <div id="cfg-modal-customer" class="cfg-modal-bg" hidden onclick="closeModal(event)">
+    <div class="cfg-modal" onclick="event.stopPropagation()">
+      <button class="cfg-modal-close" onclick="closeModal()">×</button>
+      <h2 class="cfg-modal-title">Configuration Details</h2>
+      <p class="cfg-modal-sub">Appears on the exported spec sheet</p>
+      <label class="cfg-label">Customer Name</label>
+      <input class="cfg-input" id="cfg-input-customer" placeholder="John Smith" oninput="state.customerName=this.value" />
+      <label class="cfg-label">Vessel Nickname</label>
+      <input class="cfg-input" id="cfg-input-nickname" placeholder="Sea Breeze" oninput="state.vesselNickname=this.value" />
+      <label class="cfg-label">Dealer</label>
+      <input class="cfg-input" id="cfg-input-dealer" oninput="state.dealerName=this.value" />
+      <button class="cfg-btn-modal" style="width:100%;" onclick="closeModal()">Done</button>
+    </div>
+  </div>
+
+  <!-- PRINT VIEW -->
+  <div class="cfg-print-view" id="cfg-print-view"></div>
+</div>
+
+<script>
+// ============================================================
+// VESSEL DATA
+// ============================================================
+const VESSEL = {
+  model: "Pardo 43",
+  tagline: "Italian walkaround, open deck, Volvo IPS propulsion",
+  year: 2024,
+  basePrice: 912000,
+  baseIncluded: [
+    "Master cabin with head and separate shower stall",
+    "2 x Volvo IPS 500 (370 HP) diesel with joystick",
+    "Carbon fiber black T-Top, oak interiors, external teak with black caulking",
+    "Aft sunbed with electrically opening storage",
+    "Guest cabin with 2 twin beds",
+    "Air conditioning vent for head, 110V galley socket",
+    "T-Top LED lights, courtesy LED deck lighting",
+    "Generator digital control panel",
+  ],
+};
+
+const CATEGORIES = [
+  { id: "hull", title: "Hull Finishes", lead: "Exterior color and surface", options: [
+    { id: "H01", name: "Bottom paint", price: 11850 },
+    { id: "H02", name: "Hull painted, high-temp non-metallic, color selection", price: 39690, delivery: "+5 weeks", group: "hull-paint" },
+    { id: "H03", name: "Hull painted, high-temp metallic, color selection", price: 46590, delivery: "+5 weeks", group: "hull-paint" },
+    { id: "H04", name: "Hull painted, metallic custom out of sample book", price: 55420, delivery: "+5 weeks", note: "Bentley Blue", group: "hull-paint" },
+    { id: "H05", name: "Painted stripes on waterline, custom color", price: 4420 },
+  ]},
+  { id: "deck", title: "Deck Finishes", lead: "Deck, cockpit, transom", options: [
+    { id: "D01", name: "Deck and galley painted, non-metallic, color selection", price: 28440, delivery: "+5 weeks", group: "deck-paint" },
+    { id: "D02", name: "Deck and galley painted, metallic", price: 37270, delivery: "+5 weeks", group: "deck-paint" },
+    { id: "D03", name: "Deck and galley painted, metallic custom", price: 40780, delivery: "+5 weeks", note: "Cannot be modified after order", group: "deck-paint" },
+    { id: "D04", name: "Synthetic teak deck", price: 5920, note: "Scrubbed, white caulking" },
+    { id: "D05", name: "Hydraulic retractable gangway", price: 26510 },
+    { id: "D06", name: "Long bathing platform, fixed", price: 13470, group: "bathing" },
+    { id: "D07", name: "Long bathing platform, hydraulic lift with integrated ladder", price: 42760, group: "bathing" },
+    { id: "D08", name: "Long bathing platform, hydraulic lift", price: 29450, group: "bathing" },
+    { id: "D09", name: "T-Top and cockpit in custom color", price: 12350, note: "Pagani Grigio" },
+    { id: "D10", name: "Galley area painted", price: 5450, note: "Pagani Grigio" },
+    { id: "D11", name: "Cockpit table with electric hi-lo and top cushions", price: 6680 },
+    { id: "D12", name: "2 extra fridge drawers in aft seat bench", price: 4740 },
+    { id: "D13", name: "Ice maker, white ice", price: 4600 },
+    { id: "D14", name: "Exterior silvertex upholstery, custom color", price: 2390 },
+    { id: "D15", name: "Exterior cushion piping", price: 1450, note: "Orange" },
+    { id: "D16", name: "Exterior synthetic leather upholstery, custom color", price: 6740 },
+    { id: "D17", name: "Aft awning with carbon removable poles", price: 5860 },
+    { id: "D18", name: "Forward awning with removable poles", price: 5860 },
+    { id: "D19", name: "Sureshade electric bimini integrated in T-Top", price: 16630 },
+    { id: "D20", name: "Extra side deck storage covers", price: 3590 },
+    { id: "D21", name: "Windshield wiper", price: 3150 },
+  ]},
+  { id: "interior", title: "Interior", lead: "Cabin finishes and layout", options: [
+    { id: "I01", name: "Bulkhead separating the two cabins", price: 4420 },
+    { id: "I02", name: "Grey oak wooden interiors", price: 7140, group: "wood" },
+    { id: "I03", name: "Pickled oak wooden interiors", price: 11520, group: "wood" },
+    { id: "I04", name: "Interior carpet", price: 4020 },
+  ]},
+  { id: "engine", title: "Engine and Drivetrain", lead: "Propulsion, stabilization, warranty", options: [
+    { id: "E01", name: "2 x Volvo IPS 600 (D6 440 HP)", price: 47180, group: "engine" },
+    { id: "E02", name: "2 x Volvo IPS 650 (D6 480 HP)", price: 64580, group: "engine" },
+    { id: "E03", name: "Volvo Interceptor System with auto trim, single lever, cruise, joystick, low-speed mode", price: 12030 },
+    { id: "E04", name: "7K Stabilizer gyroscope, 110V", price: 43800, group: "stabilizer" },
+    { id: "E05", name: "13K Stabilizer gyroscope, 110V", price: 61820, group: "stabilizer" },
+    { id: "E06", name: "Volvo dynamic positioning, Skyhook", price: 27800 },
+    { id: "E07", name: "Volvo 3-year extended warranty, twin engines", price: 14250 },
+  ]},
+  { id: "electric", title: "Electric System", lead: "Batteries, generator, lighting, climate", options: [
+    { id: "EL01", name: "House battery set 2x90Ah, charger 80Ah", price: 2830 },
+    { id: "EL02", name: "3000W inverter", price: 4500 },
+    { id: "EL03", name: "Kohler generator 6 KW", price: 22720, group: "generator" },
+    { id: "EL04", name: "Kohler generator 11 KW", price: 30260, group: "generator" },
+    { id: "EL05", name: "Underwater LED lights, 5 in stern, white and blue", price: 7550, group: "underwater" },
+    { id: "EL06", name: "Custom underwater RGB lights, 9 total", price: 9880, group: "underwater" },
+    { id: "EL07", name: "Dimmer for interior and exterior lights", price: 1920 },
+    { id: "EL08", name: "Reverse cycle tropical AC, heat and cool, 2 units", price: 18970 },
+  ]},
+  { id: "electronics", title: "Electronics and Entertainment", lead: "Navigation, displays, audio", options: [
+    { id: "EN01", name: "Volvo Glass Cockpit MFD-8612, 12 inch", price: 8690, qty: true },
+    { id: "EN02", name: "Volvo Glass Cockpit MFD-8616, 16 inch", price: 10480, qty: true },
+    { id: "EN03", name: "Volvo trip computer", price: 3740 },
+    { id: "EN04", name: "Volvo autopilot", price: 6100 },
+    { id: "EN05", name: "GRID remote control keypad", price: 1550 },
+    { id: "EN06", name: "Garmin GMR Fantom 18, 48NM radome, painted", price: 7200 },
+    { id: "EN07", name: "Garmin VHF 315i", price: 2250 },
+    { id: "EN08", name: "Garmin AIS-800 Rx/Tx", price: 2950 },
+    { id: "EN09", name: "22 inch LED flat TV, DVB-T, Apple TV", price: 3200 },
+    { id: "EN10", name: "Fusion UNI-DOCK Basic audio package", price: 4830, group: "audio" },
+    { id: "EN11", name: "Fusion UNI-DOCK High Performance, 3 zones with subwoofers", price: 9860, group: "audio" },
+    { id: "EN12", name: "Fusion APOLLO Ultra High Performance, 4 zones with JL Audio", price: 18530, group: "audio" },
+  ]},
+  { id: "custom", title: "Custom Options", lead: "Curated upgrades by Pardo Yachts Miami", options: [
+    { id: "C01", name: "Raymarine M232 FLIR camera, integrated, painted", price: 12700 },
+    { id: "C02", name: "Custom mounted stainless steel wine cooler, rear cabin", price: 5800 },
+    { id: "C03", name: "Custom integrated microwave in cabin", price: 3560 },
+    { id: "C04", name: "Removable carbon fiber outdoor rain shower, stern", price: 9100 },
+    { id: "C05", name: "Pepwave integrated wifi and cellular router", price: 4630 },
+    { id: "C06", name: "OSMOSEA watermaker, 60 L per hour", price: 15200 },
+    { id: "C07", name: "Freshwater anchor shower", price: 1920 },
+    { id: "C08", name: "Bow thruster", price: 11200 },
+    { id: "C09", name: "Pop-up lights in bow", price: 1580 },
+    { id: "C10", name: "Pop-up lights by dining table", price: 1350 },
+    { id: "C11", name: "Garmin PS51-TH Panoptix transducer, forward", price: 4200 },
+    { id: "C12", name: "Stern-looking camera on T-Top, visible from displays", price: 3700 },
+    { id: "C13", name: "Custom color bimini fabric, match T-Top", price: 960 },
+    { id: "C14", name: "1.5M offshore VHF antenna", price: 630 },
+    { id: "C15", name: "Custom painted T-Top tower for radar and DPS", price: 3990 },
+    { id: "C16", name: "Additional cleats on stern for cross lines", price: 5750 },
+    { id: "C17", name: "SeaBob F5 with custom charging plug and storage rack", price: 12100, group: "seabob" },
+    { id: "C18", name: "SeaBob F5s with custom charging plug and storage rack", price: 15300, group: "seabob" },
+    { id: "C19", name: "Ceramic coating exterior, haulout not included", price: 9900 },
+    { id: "C20", name: "16 fender clips on bulwark and swim platform", price: 4300 },
+    { id: "C21", name: "Decorative Custom Collection, dining set, bedding, towels", price: 5200 },
+  ]},
+  { id: "dealer", title: "Dealer Installed", lead: "Installed by Pardo Yachts Miami after delivery", options: [
+    { id: "DL01", name: "South Florida Mechanical Kit, bronze strainers, Racor filter", price: 2450 },
+    { id: "DL02", name: "Complete Stamoid cover kit, all cushions and cockpit", price: 5400 },
+    { id: "DL03", name: "USCG safety kit, 8 persons", price: 900 },
+    { id: "DL04", name: "Windshield extension, T-Top to windshield", price: 2100 },
+    { id: "DL05", name: "Navionics Platinum upgraded maps", price: 499 },
+    { id: "DL06", name: "Scaled model of your Pardo yacht", price: 4200 },
+    { id: "DL07", name: "Extra fender and line set, AERÉ with logo storage bag", price: 3250 },
+    { id: "DL08", name: "Fortress secondary anchor, rode and chain", price: 850 },
+    { id: "DL09", name: "Boat name with LED backlight, max 10 letters", price: 7850 },
+    { id: "DL10", name: "Chain counter", price: 1750 },
+    { id: "DL11", name: "Rub rail on swim platform edge", price: 4250 },
+  ]},
+];
+
+const US_INCLUDED = [
+  "US configuration, 120V/60Hz electrical system",
+  "Export papers for non-EU countries",
+  "Transport from yard to loading port, insurance included",
+  "Commissioning and preparation before loading",
+  "Propspeed treatment on pods and props",
+  "Fenders with covers and mooring lines",
+  "Stainless steel aft side gates",
+  "Shipping to Fort Lauderdale, marine insurance",
+  "US import duties",
+  "US delivery preparation",
+  "Shrink-wrap cover protection for transport",
+  "EPA EIAPP diesel engine certificates",
+];
+
+// ============================================================
+// STATE
+// ============================================================
+const state = {
+  configId: null,
+  selections: {},
+  customerName: "",
+  dealerName: "Pardo Yachts Miami",
+  vesselNickname: "",
+  savedConfigs: [],
+};
+
+// ============================================================
+// UTILITIES
+// ============================================================
+const formatPrice = (n) => {
+  if (n === 0) return "Included";
+  return "$" + n.toLocaleString("en-US");
+};
+
+function generateConfigId() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let id = "";
+  for (let i = 0; i < 6; i++) id += chars[Math.floor(Math.random() * chars.length)];
+  return id;
+}
+
+function calcTotal() {
+  let t = VESSEL.basePrice;
+  let count = 0;
+  for (const cat of CATEGORIES) {
+    for (const opt of cat.options) {
+      const sel = state.selections[opt.id];
+      if (sel?.selected) {
+        t += opt.price * (sel.quantity || 1);
+        count++;
+      }
+    }
+  }
+  return { total: t, count };
+}
+
+function findOption(optId) {
+  for (const cat of CATEGORIES) {
+    for (const opt of cat.options) {
+      if (opt.id === optId) return opt;
+    }
+  }
+  return null;
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function renderBaseList() {
+  const ul = document.getElementById("cfg-base-list");
+  ul.innerHTML = VESSEL.baseIncluded.map((item) => `<li>${item}</li>`).join("");
+}
+
+function renderSections() {
+  const container = document.getElementById("cfg-sections");
+  let html = "";
+
+  for (const cat of CATEGORIES) {
+    html += `
+      <section class="cfg-section" data-cat="${cat.id}">
+        <div class="cfg-section-header">
+          <div>
+            <h2 class="cfg-section-title">${cat.title}</h2>
+            <p class="cfg-section-lead">${cat.lead}</p>
+          </div>
+          <span class="cfg-section-count" id="count-${cat.id}">0/${cat.options.length}</span>
+        </div>
+        <div>
+          ${cat.options.map((opt) => renderOption(opt)).join("")}
+        </div>
+      </section>`;
+  }
+
+  html += `
+    <section class="cfg-section">
+      <div class="cfg-section-header">
+        <div>
+          <h2 class="cfg-section-title">US Delivery Package</h2>
+          <p class="cfg-section-lead">Included for all US-destination builds</p>
+        </div>
+        <span class="cfg-section-count">INCLUDED</span>
+      </div>
+      <ul class="cfg-base-list" style="margin:12px 0;">
+        ${US_INCLUDED.map((i) => `<li>${i}</li>`).join("")}
+      </ul>
+    </section>`;
+
+  container.innerHTML = html;
+  updateSectionCounts();
+}
+
+function renderOption(opt) {
+  return `
+    <div class="cfg-option" data-opt="${opt.id}" onclick="toggleOption('${opt.id}')">
+      <div class="cfg-option-check" id="check-${opt.id}">
+        <svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6" /></svg>
+      </div>
+      <div>
+        <div class="cfg-option-name">${opt.name}</div>
+        <div class="cfg-option-meta">
+          ${opt.note ? `<span class="cfg-option-note">${opt.note}</span>` : ""}
+          ${opt.delivery ? `<span class="cfg-option-delivery">${opt.delivery}</span>` : ""}
+          ${opt.group ? `<span class="cfg-option-group-tag">one of group</span>` : ""}
+        </div>
+        <div id="qty-${opt.id}" style="display:none;"></div>
+      </div>
+      <div class="cfg-option-price">${formatPrice(opt.price)}</div>
+    </div>`;
+}
+
+function updateOptionRow(optId) {
+  const opt = findOption(optId);
+  if (!opt) return;
+  const sel = state.selections[optId];
+  const isChecked = !!sel?.selected;
+
+  const check = document.getElementById(`check-${optId}`);
+  if (check) check.classList.toggle("checked", isChecked);
+
+  const qtyEl = document.getElementById(`qty-${optId}`);
+  if (qtyEl && opt.qty) {
+    if (isChecked) {
+      qtyEl.style.display = "block";
+      qtyEl.innerHTML = `
+        <div class="cfg-option-qty" onclick="event.stopPropagation()">
+          <button class="cfg-qty-btn" onclick="updateQty('${optId}', -1)">−</button>
+          <span class="cfg-qty-val">${sel?.quantity || 1}</span>
+          <button class="cfg-qty-btn" onclick="updateQty('${optId}', 1)">+</button>
+        </div>`;
+    } else {
+      qtyEl.style.display = "none";
+      qtyEl.innerHTML = "";
+    }
+  }
+}
+
+function updateSectionCounts() {
+  for (const cat of CATEGORIES) {
+    const selected = cat.options.filter((o) => state.selections[o.id]?.selected).length;
+    const el = document.getElementById(`count-${cat.id}`);
+    if (el) el.textContent = `${selected}/${cat.options.length}`;
+  }
+}
+
+function updateTotalDisplay() {
+  const { total, count } = calcTotal();
+  const totalStr = "$" + total.toLocaleString("en-US");
+  const optionsOnly = "$" + (total - VESSEL.basePrice).toLocaleString("en-US");
+
+  document.getElementById("cfg-total-display").textContent = totalStr;
+  document.getElementById("cfg-mobile-total").textContent = totalStr;
+  document.getElementById("cfg-count-display").textContent = `${count} option${count === 1 ? "" : "s"} selected`;
+  document.getElementById("cfg-mobile-label").textContent = `Total · ${count} option${count === 1 ? "" : "s"}`;
+  document.getElementById("cfg-options-total").textContent = optionsOnly;
+}
+
+// ============================================================
+// ACTIONS
+// ============================================================
+function toggleOption(optId) {
+  const opt = findOption(optId);
+  if (!opt) return;
+  const current = state.selections[optId];
+
+  if (current?.selected) {
+    state.selections[optId] = { ...current, selected: false };
+  } else {
+    if (opt.group) {
+      for (const cat of CATEGORIES) {
+        for (const o of cat.options) {
+          if (o.group === opt.group && o.id !== optId && state.selections[o.id]?.selected) {
+            state.selections[o.id] = { ...state.selections[o.id], selected: false };
+            updateOptionRow(o.id);
+          }
+        }
+      }
+    }
+    state.selections[optId] = { selected: true, quantity: opt.qty ? 1 : undefined };
+  }
+
+  updateOptionRow(optId);
+  updateSectionCounts();
+  updateTotalDisplay();
+}
+
+function updateQty(optId, delta) {
+  const current = state.selections[optId] || { selected: true, quantity: 1 };
+  const newQty = Math.max(1, Math.min(10, (current.quantity || 1) + delta));
+  state.selections[optId] = { ...current, selected: true, quantity: newQty };
+  updateOptionRow(optId);
+  updateTotalDisplay();
+}
+
+async function saveConfig() {
+  const id = state.configId || generateConfigId();
+  const { total, count } = calcTotal();
+  const payload = {
+    vesselModel: VESSEL.model,
+    customerName: state.customerName,
+    dealerName: state.dealerName,
+    vesselNickname: state.vesselNickname,
+    selections: state.selections,
+    total,
+    optionsCount: count,
+    updatedAt: Date.now(),
+    createdAt: state.configId ? undefined : Date.now(),
+  };
+  try {
+    await window.storage.set(`config:${id}`, JSON.stringify(payload), true);
+    state.configId = id;
+    updateConfigIdDisplay();
+    flashSaveButton();
+    loadSavedList();
+  } catch (e) {
+    console.error("Save failed:", e);
+    alert("Save failed. Please try again.");
+  }
+}
+
+function flashSaveButton() {
+  const btn = document.getElementById("cfg-save-btn");
+  btn.textContent = "Configuration Saved";
+  btn.classList.add("flash");
+  const mobileBtn = document.getElementById("cfg-mobile-save");
+  mobileBtn.classList.add("flash");
+  setTimeout(() => {
+    btn.textContent = "Update Configuration";
+    btn.classList.remove("flash");
+    mobileBtn.classList.remove("flash");
+  }, 2000);
+}
+
+function updateConfigIdDisplay() {
+  const pill = document.getElementById("cfg-id-pill");
+  const val = document.getElementById("cfg-id-value");
+  if (state.configId) {
+    pill.style.display = "inline-flex";
+    val.textContent = state.configId;
+    document.getElementById("cfg-save-btn").textContent = "Update Configuration";
+  } else {
+    pill.style.display = "none";
+    document.getElementById("cfg-save-btn").textContent = "Save Configuration";
+  }
+}
+
+async function loadSavedList() {
+  try {
+    const result = await window.storage.list("config:", true);
+    if (result?.keys) {
+      const configs = [];
+      for (const key of result.keys) {
+        try {
+          const data = await window.storage.get(key, true);
+          if (data?.value) {
+            configs.push({ id: key.replace("config:", ""), ...JSON.parse(data.value) });
+          }
+        } catch (e) {}
+      }
+      configs.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+      state.savedConfigs = configs;
+      renderSavedList();
+    }
+  } catch (e) {
+    console.error("Load list failed:", e);
+  }
+}
+
+function renderSavedList() {
+  const container = document.getElementById("cfg-saved-list");
+  if (state.savedConfigs.length === 0) {
+    container.innerHTML = `<div style="color: var(--text-muted); padding: 32px 0; text-align: center; font-size: 13px; font-family: 'Nunito', sans-serif;">No saved configurations yet. Save your first build to see it here.</div>`;
+    return;
+  }
+  container.innerHTML = state.savedConfigs.map((c) => `
+    <div class="cfg-saved-item" onclick="loadConfig('${c.id}')">
+      <div>
+        <div class="cfg-saved-id">${c.id}</div>
+        <div class="cfg-saved-name">${c.vesselNickname || c.vesselModel}${c.customerName ? " · " + c.customerName : ""}</div>
+        <div class="cfg-saved-meta">${c.optionsCount} options · ${new Date(c.updatedAt).toLocaleDateString()}</div>
+      </div>
+      <div class="cfg-saved-price">$${(c.total || 0).toLocaleString("en-US")}</div>
+    </div>
+  `).join("");
+}
+
+async function loadConfig(id) {
+  try {
+    const data = await window.storage.get(`config:${id}`, true);
+    if (data?.value) {
+      const parsed = JSON.parse(data.value);
+      state.configId = id;
+      state.selections = parsed.selections || {};
+      state.customerName = parsed.customerName || "";
+      state.dealerName = parsed.dealerName || "Pardo Yachts Miami";
+      state.vesselNickname = parsed.vesselNickname || "";
+      document.getElementById("cfg-input-customer").value = state.customerName;
+      document.getElementById("cfg-input-nickname").value = state.vesselNickname;
+      document.getElementById("cfg-input-dealer").value = state.dealerName;
+      for (const cat of CATEGORIES) {
+        for (const opt of cat.options) updateOptionRow(opt.id);
+      }
+      updateSectionCounts();
+      updateTotalDisplay();
+      updateConfigIdDisplay();
+      closeModal();
+    }
+  } catch (e) {
+    console.error("Load failed:", e);
+  }
+}
+
+function newConfig() {
+  state.configId = null;
+  state.selections = {};
+  state.customerName = "";
+  state.vesselNickname = "";
+  document.getElementById("cfg-input-customer").value = "";
+  document.getElementById("cfg-input-nickname").value = "";
+  for (const cat of CATEGORIES) {
+    for (const opt of cat.options) updateOptionRow(opt.id);
+  }
+  updateSectionCounts();
+  updateTotalDisplay();
+  updateConfigIdDisplay();
+  closeModal();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function openModal(which) {
+  if (which === "load") {
+    loadSavedList();
+    document.getElementById("cfg-modal-load").hidden = false;
+  } else if (which === "customer") {
+    document.getElementById("cfg-input-customer").value = state.customerName;
+    document.getElementById("cfg-input-nickname").value = state.vesselNickname;
+    document.getElementById("cfg-input-dealer").value = state.dealerName;
+    document.getElementById("cfg-modal-customer").hidden = false;
+  }
+}
+
+function closeModal(event) {
+  if (event && event.target !== event.currentTarget) return;
+  document.getElementById("cfg-modal-load").hidden = true;
+  document.getElementById("cfg-modal-customer").hidden = true;
+}
+
+function exportPDF() {
+  renderPrintView();
+  setTimeout(() => window.print(), 50);
+}
+
+function renderPrintView() {
+  const { total, count } = calcTotal();
+  let sectionsHtml = "";
+  for (const cat of CATEGORIES) {
+    const selected = cat.options.filter((o) => state.selections[o.id]?.selected);
+    if (!selected.length) continue;
+    sectionsHtml += `
+      <div class="cfg-print-section">
+        <div class="cfg-print-section-title">${cat.title}</div>
+        ${selected.map((opt) => {
+          const sel = state.selections[opt.id];
+          const qty = sel?.quantity || 1;
+          return `
+            <div class="cfg-print-option">
+              <span class="cfg-print-option-name">
+                ${opt.name}${opt.qty && qty > 1 ? " (×" + qty + ")" : ""}${opt.note ? " · " + opt.note : ""}${opt.delivery ? " · " + opt.delivery : ""}
+              </span>
+              <span class="cfg-print-option-price">${formatPrice(opt.price * qty)}</span>
+            </div>`;
+        }).join("")}
+      </div>`;
+  }
+
+  document.getElementById("cfg-print-view").innerHTML = `
+    <div class="cfg-print-header">
+      <div class="cfg-print-wordmark">Build Specification</div>
+      <div class="cfg-print-id">${state.configId ? "Spec " + state.configId : "Draft"} · ${new Date().toLocaleDateString()}</div>
+    </div>
+
+    <h1 class="cfg-print-title">${VESSEL.model}</h1>
+    <div class="cfg-print-tagline">${VESSEL.tagline}</div>
+
+    <div class="cfg-print-meta-row">
+      <div>
+        <div class="cfg-print-meta-label">Customer</div>
+        <div class="cfg-print-meta-value">${state.customerName || ""}</div>
+      </div>
+      <div>
+        <div class="cfg-print-meta-label">Vessel Name</div>
+        <div class="cfg-print-meta-value">${state.vesselNickname || ""}</div>
+      </div>
+      <div>
+        <div class="cfg-print-meta-label">Dealer</div>
+        <div class="cfg-print-meta-value">${state.dealerName}</div>
+      </div>
+    </div>
+
+    <div class="cfg-print-section">
+      <div class="cfg-print-section-title">Base Model and Standard Equipment</div>
+      <div class="cfg-print-option">
+        <span class="cfg-print-option-name">${VESSEL.model} · Base vessel with standard equipment</span>
+        <span class="cfg-print-option-price">${formatPrice(VESSEL.basePrice)}</span>
+      </div>
+      <ul class="cfg-print-base-list" style="margin-top: 10px;">
+        ${VESSEL.baseIncluded.map((i) => `<li>${i}</li>`).join("")}
+      </ul>
+    </div>
+
+    ${sectionsHtml}
+
+    <div class="cfg-print-section">
+      <div class="cfg-print-section-title">US Delivery Package (Included)</div>
+      <ul class="cfg-print-base-list">
+        ${US_INCLUDED.map((i) => `<li>${i}</li>`).join("")}
+      </ul>
+    </div>
+
+    <div class="cfg-print-total">
+      <span class="cfg-print-total-label">Total Build Price</span>
+      <span class="cfg-print-total-value">$${total.toLocaleString("en-US")}</span>
+    </div>
+
+    <div class="cfg-print-sigs">
+      <div><div class="cfg-print-sig-line">Customer Signature</div></div>
+      <div><div class="cfg-print-sig-line">Dealer Signature</div></div>
+    </div>
+
+    <div class="cfg-print-footer">
+      Prices in US Dollars. Specifications subject to change. This document is not a contract of sale.
+    </div>
+  `;
+}
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener("DOMContentLoaded", () => {
+  renderBaseList();
+  renderSections();
+  updateTotalDisplay();
+  document.getElementById("cfg-input-dealer").value = state.dealerName;
+  loadSavedList();
+});
+</script>
+
+</body>
+</html>
